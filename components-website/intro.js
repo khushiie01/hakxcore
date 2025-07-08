@@ -1,10 +1,47 @@
-import React from 'react';
-import Link from 'next/link';
-import Head from 'next/head';
-import { useTranslation } from 'react-i18next';
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Head from "next/head";
+import { useTranslation } from "react-i18next";
 
 const IntroSection = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
+  const [jsonLd, setJsonLd] = useState(null);
+
+  useEffect(() => {
+    const ld = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Hakxcore",
+      url: "https://www.hakxcore.io/",
+      logo: "https://www.hakxcore.io/images/logo.png",
+      description: t("intro_og_description"),
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          telephone: "https://www.hakxcore.io/#contact",
+          contactType: "customer service",
+        },
+      ],
+      sameAs: [
+        "https://www.twitter.com/hakxcore",
+        "https://github.com/hakxcore",
+        "https://instagram.com/hakxcore",
+        "https://www.linkedin.com/company/hakxcore",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Balewadi High Street",
+        addressLocality: "Pune",
+        addressRegion: "Maharashtra",
+        postalCode: "411045",
+        addressCountry: "IN",
+      },
+    };
+
+    setJsonLd(ld);
+  }, [t]);
 
   return (
     <>
@@ -13,56 +50,81 @@ const IntroSection = () => {
         <link rel="canonical" href="https://www.hakxcore.io/" />
         <meta property="og:title" content={t("intro_og_title")} />
         <meta property="og:description" content={t("intro_og_description")} />
-        <meta property="og:image" content="https://www.hakxcore.io/images/og-image.jpg" />
+        <meta
+          property="og:image"
+          content="https://www.hakxcore.io/images/og-image.jpg"
+        />
         <meta property="og:url" content="https://www.hakxcore.io/" />
         <meta property="og:type" content="website" />
-
-        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+        <link
+          rel="shortcut icon"
+          href="/images/favicon.ico"
+          type="image/x-icon"
+        />
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="167x167" href="/images/apple-touch-icon-167x167.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="57x57"
+          href="/images/apple-touch-icon-57x57.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="72x72"
+          href="/images/apple-touch-icon-72x72.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="76x76"
+          href="/images/apple-touch-icon-76x76.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="114x114"
+          href="/images/apple-touch-icon-114x114.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="120x120"
+          href="/images/apple-touch-icon-120x120.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="144x144"
+          href="/images/apple-touch-icon-144x144.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="152x152"
+          href="/images/apple-touch-icon-152x152.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="167x167"
+          href="/images/apple-touch-icon-167x167.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/images/apple-touch-icon-180x180.png"
+        />
 
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Hakxcore",
-            "url": "https://www.hakxcore.io/",
-            "logo": "https://www.hakxcore.io/images/logo.png",
-            "description": t("intro_og_description"),
-            "contactPoint": [
-              {
-                "@type": "ContactPoint",
-                "telephone": "https://www.hakxcore.io/#contact",
-                "contactType": "customer service"
-              }
-            ],
-            "sameAs": [
-              "https://www.twitter.com/hakxcore",
-              "https://github.com/hakxcore",
-              "https://instagram.com/hakxcore",
-              "https://www.linkedin.com/company/hakxcore"
-            ],
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Balewadi High Street",
-              "addressLocality": "Pune",
-              "addressRegion": "Maharashtra",
-              "postalCode": "411045",
-              "addressCountry": "IN"
-            }
-          })}
-        </script>
+        {/* ✅ Client-side injected JSON-LD script */}
+        {jsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+        )}
 
-        <link rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/Security" />
-        <link rel="noopener noreferrer" href="https://owasp.org/www-project-top-ten/" />
+        {/* External security resources */}
+        <link
+          rel="noopener noreferrer"
+          href="https://developer.mozilla.org/en-US/docs/Web/Security"
+        />
+        <link
+          rel="noopener noreferrer"
+          href="https://owasp.org/www-project-top-ten/"
+        />
         <link rel="noopener noreferrer" href="https://www.cisa.gov/" />
       </Head>
 
@@ -79,7 +141,10 @@ const IntroSection = () => {
                 </h1>
                 <Link href="/contact-page">
                   <button type="button" className="rounded-pill btn-rounded">
-                    {t("get_in_touch")}<span><i className="fas fa-arrow-right"></i></span>
+                    {t("get_in_touch")}
+                    <span>
+                      <i className="fas fa-arrow-right"></i>
+                    </span>
                   </button>
                 </Link>
               </div>
