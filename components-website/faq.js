@@ -18,7 +18,7 @@ const FaqSection = () => {
         <div className="row mt-5 faq__accordion mx-auto">
           <div className="col-md-12">
             <div className="accordion" id="accordionExample">
-              {faqList.map((item, index) => (
+              {faqList?.map((item, index) => (
                 <div className="accordion-item shadow mb-3" key={index}>
                   <h2 className="accordion-header" id={`heading${index}`}>
                     <button

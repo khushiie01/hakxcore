@@ -4,7 +4,7 @@ import Footer from '../../../components-website/footer';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import I18nProvider from '@/app/components/I18nProvider';
+import I18nProvider from '@/app/components/I18nProvide';
 import axios from "axios";
 
 function ContactPageContent() {  

@@ -1,4 +1,5 @@
 "use client";
+import i18n from "@/i18n";
 import { Inter } from "next/font/google";
 import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,7 +21,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Intercom from '@intercom/messenger-js-sdk';
 // Import the I18n Provider
-import I18nProvider from "../components/I18nProvider";
+import I18nProvider from "../components/I18nProvide";
 
 Intercom({
   app_id: 'asbm4t30',

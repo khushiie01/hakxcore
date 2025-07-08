@@ -77,7 +77,7 @@ const { t } = useTranslation('featured');
 
         <div className="slider">
           <div className="slide-track">
-            {companies.map((company, index) => (
+            {companies?.map((company, index) => (
               <div key={index} className="slide_featured_company">
                 <div className="featured-in__logo-box shadow-sm">
                   <img src={company.logo} alt={company.name} title={company.name} className="img-fluid company-logo" />

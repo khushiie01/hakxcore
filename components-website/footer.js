@@ -88,7 +88,7 @@ const FooterSection = () => {
             <h5 className="text-capitalize fw-bold">{t("services_heading")}</h5>
             <hr className="bg-white d-inline-block mb-4" />
             <ul className="list-inline company-list">
-              {t("services_list", { returnObjects: true }).map((item, index) => (
+              {t("services_list", { returnObjects: true })?.map((item, index) => (
                 <li key={index}><Link href="#contact">{item}</Link></li>
               ))}
             </ul>
@@ -97,7 +97,7 @@ const FooterSection = () => {
             <h5 className="text-capitalize fw-bold">{t("links_heading")}</h5>
             <hr className="bg-white d-inline-block mb-4" />
             <ul className="list-inline company-list">
-              {t("links_list", { returnObjects: true }).map((item, index) => (
+              {t("links_list", { returnObjects: true })?.map((item, index) => (
                 <li key={index}><Link href="#">{item}</Link></li>
               ))}
             </ul>
@@ -106,7 +106,7 @@ const FooterSection = () => {
             <h5 className="text-capitalize fw-bold">{t("contact_heading")}</h5>
             <hr className="bg-white d-inline-block mb-4" />
             <ul className="list-inline company-list">
-              {t("contact_list", { returnObjects: true }).map((item, index) => (
+              {t("contact_list", { returnObjects: true })?.map((item, index) => (
                 <li key={index}><Link href="#">{item}</Link></li>
               ))}
             </ul>

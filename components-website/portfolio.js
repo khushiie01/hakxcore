@@ -36,7 +36,7 @@ const PortfolioSection = () => {
                 {/* FILTER BUTTONS */}
                 <div className="row mt-5 mb-4 g-3 text-center">
                     <div className="col-md-12">
-                        {["all", "sso", "courses", "devsecops", "crm","design"].map((category) => (
+                        {["all", "sso", "courses", "devsecops", "crm","design"]?.map((category) => (
                             <button
                                 key={category}
                                 className={`btn btn-outline-primary filter-btn mx-1 ${filter === category ? "active" : ""}`}
@@ -53,7 +53,7 @@ const PortfolioSection = () => {
                 <div className="row d-flex justify-content-around">
                     {portfolioItems
                         .filter(item => filter === "all" || item.category === filter)
-                        .map(item => (
+                        ?.map(item => (
                             <div key={item.id} className="col-lg-4 col-md-6 portfolio-card" data-tags={`all, ${item.category}`}>
                                 <div className="portfolio-box shadow">
                                     <img src={item.imgSrc} alt={item.title} title={item.title} className="img-fluid" />
